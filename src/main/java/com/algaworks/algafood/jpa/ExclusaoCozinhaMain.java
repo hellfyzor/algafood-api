@@ -7,22 +7,18 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 
-import java.util.List;
-
-public class ConsultaCozinhaMain {
+public class ExclusaoCozinhaMain {
 
     public static void main(String[] args) {
         ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
                 .web(WebApplicationType.NONE)
                 .run(args);
 
-        CozinhaRepository cadastroCozinha = applicationContext.getBean(CozinhaRepository.class);
+        CozinhaRepository cozinhaRepository = applicationContext.getBean(CozinhaRepository.class);
 
-        List<Cozinha> cozinhas = cadastroCozinha.todas();
-
-        for (Cozinha cozinha : cozinhas){
-            System.out.println(cozinha.getNome());
-        }
+       Cozinha cozinha = new Cozinha();
+       cozinha.setId(1L);
+       cozinhaRepository.remover(cozinha);
 
     }
 
