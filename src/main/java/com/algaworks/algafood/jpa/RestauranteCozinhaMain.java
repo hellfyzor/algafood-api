@@ -7,6 +7,7 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 
+import javax.persistence.Id;
 import java.util.List;
 
 public class RestauranteCozinhaMain {
@@ -21,7 +22,7 @@ public class RestauranteCozinhaMain {
         List<Restaurante> restaurantes = restauranteRepository.todas();
 
         for (Restaurante restaurante : restaurantes) {
-            System.out.printf("%d - %s - %s \n", restaurante.getId(), restaurante.getNome(), restaurante.getTaxaFrete());
+            System.out.printf("%d - %s - %s - %s\n", restaurante.getId(), restaurante.getNome(), restaurante.getTaxaFrete(), restaurante.getCozinha().getNome() );
         }
 
     }
