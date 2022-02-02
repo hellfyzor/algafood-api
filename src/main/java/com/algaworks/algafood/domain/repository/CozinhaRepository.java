@@ -8,12 +8,9 @@ import java.util.List;
 
 @Repository
 public interface CozinhaRepository{
+
     List<Cozinha> todas();
-
     Cozinha porId(Long id);
-
     Cozinha adicionar(Cozinha cozinha);
-
-    @Transactional
     void remover(Cozinha cozinha);
 }
