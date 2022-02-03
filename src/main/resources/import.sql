@@ -15,3 +15,7 @@ insert into permissao (nome, descricao) values ('login', 'negado');
 insert into estado (nome) values ('Distrito Federal');
 insert into estado (nome) values ('São Paulo');
 insert into estado (nome) values ('Rio de Janeiro');
+
+insert into cidade (nome, estado_id) values ('Taguatinga', 1);
+insert into cidade (nome, estado_id) values ('Jundiaí', 2);
+insert into cidade (nome, estado_id) values ('Bangú', 3);
