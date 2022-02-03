@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContext;
 
 import java.util.List;
 
-public class PermissaoCozinhaMain {
+public class ConsultaPermissaoMain {
 
     public static void main(String[] args) {
         ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)

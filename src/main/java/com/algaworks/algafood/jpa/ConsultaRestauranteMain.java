@@ -10,7 +10,7 @@ import org.springframework.context.ApplicationContext;
 import javax.persistence.Id;
 import java.util.List;
 
-public class RestauranteCozinhaMain {
+public class ConsultaRestauranteMain {
 
     public static void main(String[] args) {
         ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)

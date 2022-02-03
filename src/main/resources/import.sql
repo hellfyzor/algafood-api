@@ -9,5 +9,9 @@ insert into restaurante (nome, taxa_frete, cozinha_id) values ('Bomba do Hell', 
 insert into forma_pagamento (descricao) values ('Pagamento será efetuado no local.');
 insert into forma_pagamento (descricao) values ('Pagamento já efetuado pelo pix!');
 
-insert into Permissao (nome, descricao) values ('login', 'sucesso');
-insert into Permissao (nome, descricao) values ('login', 'negado');
+insert into permissao (nome, descricao) values ('login', 'sucesso');
+insert into permissao (nome, descricao) values ('login', 'negado');
+
+insert into estado (nome) values ('Distrito Federal');
+insert into estado (nome) values ('São Paulo');
+insert into estado (nome) values ('Rio de Janeiro');
