@@ -21,8 +21,8 @@ public class CozinhaController {
     }
 
     @GetMapping("/{cozinhaId}")
-    public Cozinha porId(@PathVariable("cozinhaId") Long id){
-        return cozinhaRepository.porId(id);
+    public Cozinha porId(@PathVariable Long cozinhaId){
+        return cozinhaRepository.porId(cozinhaId);
     }
 
 }
