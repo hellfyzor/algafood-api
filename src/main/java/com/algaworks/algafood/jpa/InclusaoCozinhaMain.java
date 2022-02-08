@@ -2,7 +2,7 @@ package com.algaworks.algafood.jpa;
 
 import com.algaworks.algafood.AlgafoodApiApplication;
 import com.algaworks.algafood.domain.repository.CozinhaRepository;
-import com.algaworks.algafood.model.Cozinha;
+import com.algaworks.algafood.domain.model.Cozinha;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
@@ -25,9 +25,9 @@ public class InclusaoCozinhaMain {
         Cozinha cozinha3 = new Cozinha();
         cozinha3.setNome("Árabe");
 
-        cozinha1 = cadastroCozinha.adicionar(cozinha1);
-        cozinha2 = cadastroCozinha.adicionar(cozinha2);
-        cozinha3 = cadastroCozinha.adicionar(cozinha3);
+        cozinha1 = cadastroCozinha.salvar(cozinha1);
+        cozinha2 = cadastroCozinha.salvar(cozinha2);
+        cozinha3 = cadastroCozinha.salvar(cozinha3);
 
 
         System.out.printf("%d - %s \n", cozinha1.getId(), cozinha1.getNome());

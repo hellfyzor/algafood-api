@@ -1,9 +1,7 @@
 package com.algaworks.algafood.infrastructure.repository;
 
-import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.repository.EstadoRepository;
-import com.algaworks.algafood.model.Cozinha;
-import com.algaworks.algafood.model.Estado;
+import com.algaworks.algafood.domain.model.Estado;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,9 +1,7 @@
 package com.algaworks.algafood.infrastructure.repository;
 
 import com.algaworks.algafood.domain.repository.CidadeRepository;
-import com.algaworks.algafood.domain.repository.EstadoRepository;
-import com.algaworks.algafood.model.Cidade;
-import com.algaworks.algafood.model.Estado;
+import com.algaworks.algafood.domain.model.Cidade;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

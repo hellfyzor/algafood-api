@@ -1,8 +1,7 @@
 package com.algaworks.algafood.domain.repository;
 
-import com.algaworks.algafood.model.Cozinha;
+import com.algaworks.algafood.domain.model.Cozinha;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ public interface CozinhaRepository{
 
     List<Cozinha> todas();
     Cozinha porId(Long id);
-    Cozinha adicionar(Cozinha cozinha);
+    Cozinha salvar(Cozinha cozinha);
     void remover(Cozinha cozinha);
 
 }

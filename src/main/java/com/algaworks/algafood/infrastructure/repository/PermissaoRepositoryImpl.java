@@ -1,9 +1,7 @@
 package com.algaworks.algafood.infrastructure.repository;
 
-import com.algaworks.algafood.domain.repository.CozinhaRepository;
 import com.algaworks.algafood.domain.repository.PermissaoRepository;
-import com.algaworks.algafood.model.Cozinha;
-import com.algaworks.algafood.model.Permissao;
+import com.algaworks.algafood.domain.model.Permissao;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
