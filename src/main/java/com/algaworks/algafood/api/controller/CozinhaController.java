@@ -37,8 +37,20 @@ public class CozinhaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Cozinha adicionar (@RequestBody Cozinha cozinha){
+    public Cozinha adicionar(@RequestBody Cozinha cozinha) {
         return cozinhaRepository.adicionar(cozinha);
+    }
+
+    @PutMapping("/{cozinhaId}")
+    public ResponseEntity<Cozinha> adicionar(@PathVariable Cozinha cozinhaId, @RequestBody Cozinha cozinha) {
+        Cozinha cozinhaAtual = cozinhaRepository.adicionar(cozinhaId);
+
+
+    }
+
+    @DeleteMapping("/{deleteId}")
+    public void remover(@PathVariable Cozinha deleteId) {
+        cozinhaRepository.remover(deleteId);
     }
 
 }
