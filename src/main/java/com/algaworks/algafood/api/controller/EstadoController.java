@@ -1,5 +1,6 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.repository.EstadoRepository;
@@ -25,13 +26,21 @@ public class EstadoController {
 
     @GetMapping
     public List<Estado> todas(){
+
         return estadoRepository.todas();
     }
 
     @GetMapping("/{estadoId}")
-    public Estado porId(@PathVariable Long estadoId){
+    public ResponseEntity<Estado> porId(@PathVariable Long estadoId){
 
-        return estadoRepository.porId(estadoId);
+        Estado estado = estadoRepository.porId(estadoId);
+
+        if(estado != null){
+            return ResponseEntity.ok().body(estado);
+        }
+
+        return ResponseEntity.notFound().build();
+
     }
 
     @PostMapping
@@ -57,6 +66,21 @@ public class EstadoController {
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/{estadoId}")
+    public ResponseEntity<?> remover(@PathVariable Long estadoId) {
+
+        try {
+            cadastroEstadoService.excluir(estadoId);
+            return ResponseEntity.noContent().build();
+
+        } catch (EntidadeNaoEncontradaException e) {
+            return ResponseEntity.notFound().build();
+
+        } catch (EntidadeEmUsoException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+        }
     }
 
 }
