@@ -1,5 +1,6 @@
 package com.algaworks.algafood.api.controller;
 
+import com.algaworks.algafood.domain.exception.EntidadeEmUsoException;
 import com.algaworks.algafood.domain.exception.EntidadeNaoEncontradaException;
 import com.algaworks.algafood.domain.model.Cozinha;
 import com.algaworks.algafood.domain.model.Restaurante;
@@ -71,6 +72,20 @@ public class RestauranteController {
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/{restauranteId}")
+    public ResponseEntity<?> excluir(@PathVariable Long restauranteId) {
+
+        try {
+            cadastroRestauranteService.remover(restauranteId);
+            return ResponseEntity.noContent().build();
+
+        } catch (EntidadeNaoEncontradaException e) {
+            return ResponseEntity.notFound().build();
+        } catch (EntidadeEmUsoException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+        }
     }
 
 }
