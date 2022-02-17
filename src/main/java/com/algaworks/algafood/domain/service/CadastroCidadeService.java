@@ -15,6 +15,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CadastroCidadeService {
 
@@ -26,20 +28,20 @@ public class CadastroCidadeService {
 
     public Cidade salvar(Cidade cidade) {
         Long cidadeId = cidade.getEstado().getId();
-        Estado estado = estadoRepository.porId(cidadeId);
+        Optional<Estado> estado = estadoRepository.findById(cidadeId);
 
-        if (estado == null ){
-            throw new EntidadeNaoEncontradaException(String.format("Não existe cadastro de cozinha com o código %d", cidadeId));
+        if (estado.isEmpty() ){
+            throw new EntidadeNaoEncontradaException(String.format("Não existe cadastro de cidade com o código %d", cidadeId));
         }
 
-        cidade.setEstado(estado);
+        cidade.setEstado(estado.get());
 
-        return cidadeRepository.salvar(cidade);
+        return cidadeRepository.save(cidade);
     }
 
     public void remover (Long cidadeId){
         try{
-            cidadeRepository.remover(cidadeId);
+            cidadeRepository.deleteById(cidadeId);
         }  catch (EmptyResultDataAccessException e){
             throw new EntidadeNaoEncontradaException(String.format("Cozinha de código %d não encontrado, verifique o código!", cidadeId));
         }

@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/estados")
@@ -27,16 +28,16 @@ public class EstadoController {
     @GetMapping
     public List<Estado> todas(){
 
-        return estadoRepository.todas();
+        return estadoRepository.findAll();
     }
 
     @GetMapping("/{estadoId}")
     public ResponseEntity<Estado> porId(@PathVariable Long estadoId){
 
-        Estado estado = estadoRepository.porId(estadoId);
+        Optional<Estado> estado = estadoRepository.findById(estadoId);
 
-        if(estado != null){
-            return ResponseEntity.ok().body(estado);
+        if(estado.isPresent()){
+            return ResponseEntity.ok().body(estado.get());
         }
 
         return ResponseEntity.notFound().build();
@@ -46,20 +47,21 @@ public class EstadoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Estado adicionar (@RequestBody Estado estado){
-        return estadoRepository.salvar(estado);
+
+        return estadoRepository.save(estado);
     }
 
     @PutMapping("/{estadoId}")
     public ResponseEntity<?> atualizar(@PathVariable Long estadoId, @RequestBody Estado estado) {
         try {
-            Estado estadoAtual = estadoRepository.porId(estadoId);
+            Optional<Estado> estadoAtual = estadoRepository.findById(estadoId);
 
-            if (estadoAtual != null) {
-                BeanUtils.copyProperties(estado, estadoAtual, "id");
+            if (estadoAtual.isPresent()) {
+                BeanUtils.copyProperties(estado, estadoAtual.get(), "id");
 
-                cadastroEstadoService.salvar(estadoAtual);
+                Estado estadoSalvo = cadastroEstadoService.salvar(estadoAtual.get());
 
-                return ResponseEntity.ok(estadoAtual);
+                return ResponseEntity.ok(estadoSalvo);
             }
         } catch (EntidadeNaoEncontradaException e){
             return ResponseEntity.badRequest().body(e.getMessage());
