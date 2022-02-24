@@ -13,10 +13,10 @@ import java.util.List;
 @Repository
 public interface RestauranteRepository extends JpaRepository<Restaurante, Long>, RestauranteRepositoryQueries, JpaSpecificationExecutor<Restaurante> {
 
-    List<Restaurante> queryByTaxaFreteBetween (BigDecimal taxaInicial, BigDecimal taxaFinal);
+    /*List<Restaurante> queryByTaxaFreteBetween (BigDecimal taxaInicial, BigDecimal taxaFinal);
 
     List<Cozinha> consultarPorNome (String nome, @Param("id") Long cozinha);
-
+*/
 
 
 }
